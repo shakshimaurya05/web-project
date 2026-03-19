@@ -17,6 +17,115 @@ body {
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
+/* Mobile menu toggle */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 16px;
+}
+
+/* Navigation Menu */
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile logout button  */
+.mobile-logout {
+  display: none;
+}
+
+/* Header logout desktop wrapper */
+.header-logout-desktop {
+  display: block;
+}
+
+/* Sidebar toggle button*/
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #647897;
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 998;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-toggle:hover {
+  background: #92a7c8;
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #f7f7f7;
+    flex-direction: column;
+    padding: 16px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .nav-menu-open {
+    display: flex;
+  }
+
+  .nav-menu .homenav {
+    margin: 8px 0;
+    padding: 12px 24px;
+    width: 100%;
+  }
+
+  .nav-menu .homenav:hover {
+    background-color: #e0e0e0;
+  }
+
+  /* show logout button in moile menu */
+  .mobile-logout {
+    display: block;
+    width: calc(100% - 48px);
+    margin: 12px 24px;
+    padding: 10px 16px;
+    border: none;
+    background: #647897;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .mobile-logout:hover {
+    background-color: #92a7c8;
+  }
+
+  /* Hide desktop logout button on mobile */
+  .header-logout-desktop {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Show sidebar toggle on mobile */
+  .sidebar-toggle {
+    display: flex;
+  }
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -29,7 +138,7 @@ body {
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 50px; 
+  gap: 50px;
 }
 .header button{
 padding: 8px 14px;
@@ -163,13 +272,15 @@ border-radius: 5px;
   border-radius: 15px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
   text-align: center;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .match-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px) rotateY(10deg) rotateX(5deg) scale3d(1.02, 1.02, 1.02);
+  box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.2), 10px 10px 20px rgba(108, 99, 255, 0.3);
 }
 
 
@@ -302,4 +413,141 @@ border-radius: 5px;
    background-color: 
   #2c435d;
   color: white;
+}
+
+@media (max-width: 992px) {
+
+  .banner h1 {
+    font-size: 2.5rem;
+    margin-left: 2rem;
+  }
+
+  .banner p {
+    font-size: 1.2rem;
+    margin-left: 2rem;
+  }
+
+  .banner img {
+    width: 30%;
+    top: 40px;
+  }
+
+  .header-right {
+    gap: 20px;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  /* Header */
+  .header {
+    padding: 12px;
+    position: relative;
+  }
+  
+
+  .header-right {
+    gap: 10px;
+  }
+
+  .profile-icon {
+    margin-top: 0;
+  }
+
+  /* Banner */
+  .banner {
+    height: auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .banner h1 {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .banner p {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+
+  .banner img {
+    position: static;
+    width: 60%;
+    margin-top: 15px;
+  }
+
+  /* Sidebar hidden by default */
+  .sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 220px;
+    height: 100%;
+    z-index: 1000;
+    transition: 0.3s ease;
+  }
+
+  /* when open */
+  .sidebar-open {
+    left: 0;
+  }
+
+  /* Sidebar overlay */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  /* Content full width */
+  .content {
+    flex-direction: column;
+  }
+
+  .main {
+    padding: 15px;
+  }
+
+
+  .matches-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+@media (max-width: 480px) {
+
+  .banner {
+    padding: 20px 15px;
+    min-height: 200px;
+  }
+
+  .banner h1 {
+    font-size: 1.6rem;
+  }
+
+  .banner p {
+    font-size: 0.9rem;
+  }
+
+  .banner img {
+    width: 85%;
+    max-width: 250px;
+  }
+
+  .header button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .match-card {
+    padding: 15px;
+  }
 }

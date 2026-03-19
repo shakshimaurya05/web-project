@@ -27,7 +27,6 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-
         <Route path="/home" element={<PrivateRoute element={<Home />} />} />
         <Route path="/profile" element={<PrivateRoute element={<Profile />} />} />
         <Route path="/my-skills" element={<PrivateRoute element={<MySkills />} />} />

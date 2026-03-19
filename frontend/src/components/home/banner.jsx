@@ -12,8 +12,9 @@ const Banner = () => {
   }, []);
 
   return (
-    <section className="banner">
-
+   <section className="banner">
+  <div className="banner-container">
+<div className="banner-text">
       <motion.h1
         initial={{ y: 80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -29,7 +30,7 @@ const Banner = () => {
       >
         Ready to share your skills and learn something new?
       </motion.p>
-
+</div>
       <div
         className="laptop"
        
@@ -40,6 +41,7 @@ const Banner = () => {
           animate={{ y: [0, -10, 0] }} 
           transition={{ duration: 3, repeat: Infinity }}
         />
+      </div>
       </div>
 
     </section>

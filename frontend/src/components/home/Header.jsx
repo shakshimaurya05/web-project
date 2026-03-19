@@ -6,10 +6,11 @@ import "./home.css";
 
 const Header = () => {
   const [loggedInUser, setLoggedInUser] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    //Get user from localStorage 
+    //Get user from localStorage
     const user = localStorage.getItem("loggedInUser");
     setLoggedInUser(user || "Guest");
   }, []);
@@ -34,21 +35,31 @@ const Header = () => {
           <i className="fa-solid fa-infinity"></i> SkillSwap
         </span>
       </div>
-      <div className="homenav" onClick={() => navigate("/home")}>
-       <h6> Home</h6>
-    
+
+      {/* Mobile Toggle Button */}
+      <div className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <i className={`fa-solid ${isMenuOpen ? "fa-times" : "fa-bars"}`}></i>
       </div>
-      <div
-  className="homenav"
-  onClick={() =>
-    navigate("/home", { state: { scrollTo: "matches" } })
-  }
->
-  <h6>Explore</h6>
-</div>
+
+      <div className={`nav-menu ${isMenuOpen ? "nav-menu-open" : ""}`}>
+        <div className="homenav" onClick={() => navigate("/home")}>
+          <h6> Home</h6>
+        </div>
+        <div
+          className="homenav"
+          onClick={() =>
+            navigate("/home", { state: { scrollTo: "matches" } })
+          }
+        >
+          <h6>Explore</h6>
+        </div>
+        <button className="mobile-logout" onClick={handleLogout}>Logout</button>
+      </div>
 
       <div className="header-right">
-        <button onClick={handleLogout}>Logout</button>
+        <div className="header-logout-desktop">
+          <button onClick={handleLogout}>Logout</button>
+        </div>
 
         <div
           className="profile-icon"
